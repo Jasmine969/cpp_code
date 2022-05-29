@@ -1,0 +1,8 @@
+book No.		Units sold	Total price	 Avg price
+0-201-78345-X	5			110			 22
+0-201-78343-X	2			50			 25
+0-201-78342-X	6			160			 26.67
+book No.		Units sold	Total price	 Avg price
+0-201-78345-X	5			110			 22
+0-201-78343-X	2			50			 25
+0-201-78342-X	6			160			 26.67

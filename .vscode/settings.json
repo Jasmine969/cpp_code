@@ -1,0 +1,29 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "ostream": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "cmath": "cpp",
+        "numeric": "cpp",
+        "cstdlib": "cpp",
+        "iostream": "cpp",
+        "cassert": "cpp",
+        "iterator": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp"
+    },
+    "cmake.configureOnOpen": true,
+    "todo-tree.tree.showCountsInTree": true,
+    "todo-tree.tree.showBadges": false
+}
