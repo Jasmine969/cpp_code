@@ -5,12 +5,12 @@
 #include "../myfunc.h"
 #include "../chap7/Sales_data_ex21.h"
 
-using std::vector;
-using std::string;
-using std::stable_sort;
 using std::cout;
+using std::stable_sort;
+using std::string;
+using std::vector;
 
-inline bool compareIsbn(const Sales_data& sale1, const Sales_data& sale2)
+inline bool compareIsbn(const Sales_data &sale1, const Sales_data &sale2)
 {
     return sale1.isbn() < sale2.isbn();
 }
