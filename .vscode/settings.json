@@ -21,7 +21,10 @@
         "cassert": "cpp",
         "iterator": "cpp",
         "iosfwd": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "fstream": "cpp"
     },
     "cmake.configureOnOpen": true,
     "todo-tree.tree.showCountsInTree": true,
