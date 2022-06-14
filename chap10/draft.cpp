@@ -43,13 +43,8 @@ ostream &print(ostream &os, double d)
 }
 int main()
 {
-    list<int> li{1,0,2,30,0,4,5,1,0,11,9};
-    auto last0 = find(li.crbegin(), li.crend(), 0);
-    cout << *last0 << '\n';
-    last0++;
-    cout << *last0 << '\n';
-    int p = 1;
-    for (auto iter = li.begin(); iter != last0.base(); iter++, p++);
-    cout << p << "个位置\n";
+    const vector<int> vi{1,2,3,4};
+    const auto iter_c = vi.begin();
+    cout << *(++iter_c) << "\n";
     return 0;
 }
