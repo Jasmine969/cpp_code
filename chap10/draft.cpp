@@ -28,9 +28,13 @@ using std::boolalpha;
 using std::cin;
 using std::for_each;
 using std::istream_iterator;
-using std::ostream;
-using std::ref;
 using std::list;
+using std::ostream;
+using std::ostream_iterator;
+using std::ref;
+using std::remove;
+using std::rotate;
+using std::advance;
 
 bool less(double d1, double d2)
 {
@@ -43,8 +47,10 @@ ostream &print(ostream &os, double d)
 }
 int main()
 {
-    const vector<int> vi{1,2,3,4};
-    const auto iter_c = vi.begin();
-    cout << *(++iter_c) << "\n";
+    ostream_iterator<int> out_int(cout, " ");
+    list<int> vi{1, 6, 3, 4, 4, 5, 6, 7, 8, 9, 10};
+    auto iter = vi.begin();
+    advance(iter, 5);
+    cout << *iter << '\n';
     return 0;
 }
