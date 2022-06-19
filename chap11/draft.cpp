@@ -3,14 +3,18 @@
 #include <algorithm>
 #include <iterator>
 #include <string>
+#include <list>
 
+using std::list;
 using std::string;
 using std::ostream_iterator;
 using std::copy;
 using std::set;
 using std::cout;
 using std::swap;
-
+using std::find;
+using my_fun = bool (*)(const string&);
+typedef bool(*fun)(const string&);
 void trans_word(string& s)
 {
     set<char> exclu_punc{',','.',':','\"','\'',';'};
@@ -29,10 +33,13 @@ void trans_word(string& s)
     }
 }
 
+string::size_type sumLength(const string&, const string&);
+
+auto getFcn(const string&) -> decltype(sumLength)*;
+
 int main()
 {
-    string s("Word,");
-    trans_word(s);
-    cout << s << '\n';
+    list<int> li{10,20,30,40,50};
+    find(li.begin(), li.end(), 20);
     return 0;
 }
