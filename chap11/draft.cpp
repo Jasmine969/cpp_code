@@ -4,7 +4,10 @@
 #include <iterator>
 #include <string>
 #include <list>
+#include <utility>
 
+using std::pair;
+using std::make_pair;
 using std::list;
 using std::string;
 using std::ostream_iterator;
@@ -39,7 +42,9 @@ auto getFcn(const string&) -> decltype(sumLength)*;
 
 int main()
 {
-    list<int> li{10,20,30,40,50};
-    find(li.begin(), li.end(), 20);
+    pair<int, char> p{3, 'c'};
+    pair<int, char> p1{3, 'b'};
+    pair<int, char> p2{4, 'd'};
+    cout << std::boolalpha << (p < p1) << ' ' << (p < p2) << ' ' << (p1 < p2) << '\n';
     return 0;
 }

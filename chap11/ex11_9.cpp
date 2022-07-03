@@ -49,7 +49,7 @@ int main()
         while (stream_words >> word)
         {
             trans_word(word);
-            if (find(words_lino[word].begin(), words_lino[word].end(), lino) != words_lino[word].end())
+            if (find(words_lino[word].begin(), words_lino[word].end(), lino) != words_lino[word].end()) // 如果word已经在lino一行出现过，就跳过
                 continue;
             words_lino[word].push_back(lino);
         }
