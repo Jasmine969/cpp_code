@@ -71,7 +71,7 @@ int main()
             cin >> surname;
             cout << "Enter the birthday: ";
             cin >> birthday;
-            families[surname].emplace_back("", birthday);
+            families[surname].emplace_back("N/A", birthday);
         }
         else
         {
@@ -81,15 +81,22 @@ int main()
         cout << "Done! Enter the option (s, l, b, their combination, or exit/e): ";
     }
     // output
-    cout << "families are as follows:\n";
+    cout << string(10, '=') << "\nFamilies are as follows:\n";
     cout << "Surname\tLast name\tBirthday\n";
     for (auto family : families)
     {
-        for (auto last_birth:family.second)
+        if (family.second.size())
         {
-            cout << family.first << "\t" << last_birth.first << "\t" << last_birth.second << "\n";
+            for (auto last_birth : family.second)
+            {
+                cout << family.first << "\t" << last_birth.first << "\t\t" << last_birth.second << "\n";
+            }
         }
-        cout << "\n" << string(10, '-') << "\n";
+        else // 只有姓，无其他信息
+        {
+            cout << family.first << "\tN/A\t\tN/A\n";
+        }
+        cout << string(10, '-') << "\n";
     }
     return 0;
 }
