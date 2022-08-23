@@ -22,36 +22,28 @@ using std::string;
 using std::swap;
 using std::vector;
 
-void trans_word(string &s)
-{
-    set<char> exclu_punc{',', '.', ':', '\"', '\'', ';'};
-    auto iter = s.begin();
-    while (iter != s.end())
-    {
-        if (exclu_punc.find(*iter) != exclu_punc.end())
-        {
-            iter = s.erase(iter);
-        }
-        else
-        {
-            *iter = tolower(*iter);
-            ++iter;
-        }
-    }
-}
+#include <iostream>
+#include <unordered_map>
+#include <string>
 
-string::size_type sumLength(const string &, const string &);
-
-auto comp_pair = [](pair<int, char> p1, pair<int, char> p2)
-{ return (p1.first < p2.first) || (!(p2.first < p1.first) && (p1.second < p2.second)); };
-
-pair<int, char> fun() { return {}; };
+using namespace std;
 
 int main()
 {
-    map<char, int> m{{'a',1},{'b',2},{'d',44},{'e',5}};
-    auto ret = m.equal_range('c');
-    cout << ret.first->first << ' ' << ret.second->first << '\n';
-    cout << m.at('b') << '\n';
+    unordered_map<string, size_t> unmap;	// 默认构造一个无序容器
+    string word;		// 要插入的数
+    while(cin >> word && cin.get() != '\n')
+         ++unmap[word];
+         
+    for(const auto& w:unmap)
+    {
+        cout << w.first << " occurs " << w.second << 
+       		 ((w.second > 1)? " times   " : " time   ") <<
+             unmap.bucket(w.first) << endl;
+    }
+
+    cout << unmap.bucket_count() << endl;		// 目前桶的数目
+    cout << unmap.max_bucket_count() << endl;		// 桶的最大数目
+    cout << unmap.bucket("hua") << endl;	// 该键对应的值有几个
     return 0;
 }

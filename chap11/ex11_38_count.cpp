@@ -1,0 +1,51 @@
+#include <iostream>
+#include <fstream>
+#include <unordered_map>
+#include <set>
+#include <string>
+
+using std::cout;
+using std::ifstream;
+using std::unordered_map;
+using std::set;
+using std::string;
+
+void trans_word(string &s)
+{
+    set<char> exclu_punc{',', '.', ':', '\"', '\'', ';', '?'};
+    auto iter = s.begin();
+    while (iter != s.end())
+    {
+        if (iter + 1 == s.end() // 是尾元素了，看看是否是标点
+            && exclu_punc.find(*iter) != exclu_punc.end())
+        {
+            iter = s.erase(iter);
+        }
+        else
+        {
+            *iter = tolower(*iter);
+            ++iter;
+        }
+    }
+}
+
+int main()
+{
+    ifstream in("lyrics.txt");
+    string word;
+    unordered_map<string, unsigned> wc;
+    set<string> exclude{"the", "and", "or", "The", "And", "Or"};
+    while (in >> word)
+    {
+        trans_word(word);
+        // 这个词在exclude中，所以不参与统计
+        if (exclude.find(word) != exclude.end())
+            continue;
+        ++wc[word];
+    }
+    for (auto &p : wc)
+    {
+        cout << "\"" << p.first << "\" occurs " << p.second << (p.second == 1 ? " time" : " times") << "\n";
+    }
+    return 0;
+}
