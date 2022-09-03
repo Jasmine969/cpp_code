@@ -1,3 +1,6 @@
+#ifndef STRBLOB_H
+#define STRBLOB_H
+
 #include <vector>
 #include <memory>
 #include <string>
@@ -21,6 +24,8 @@ public:
     bool empty() const { return data->empty(); }
     string &front();
     string &back();
+    string &front() const;
+    string &back() const;
     void push_back(string s) { data->push_back(s); }
     void pop_back();
 
@@ -49,8 +54,22 @@ string &StrBlob::back()
     return data->back();
 }
 
+string &StrBlob::front() const
+{
+    check(0, "front on an empty StrBlob.");
+    return data->front();
+}
+
+string &StrBlob::back() const
+{
+    check(0, "back on an empty StrBlob.");
+    return data->back();
+}
+
 void StrBlob::pop_back()
 {
     check(0, "pop_back on an empty StrBlob.");
     data->pop_back();
 }
+
+#endif

@@ -1,27 +1,28 @@
 #include <memory>
 #include <iostream>
+#include <vector>
 
-using std::shared_ptr;
-using std::make_shared;
 using std::cout;
+using std::make_shared;
+using std::shared_ptr;
+using std::unique_ptr;
+using std::vector;
+using std::weak_ptr;
 
-shared_ptr<int> factory(int i)
+struct connection {};
+struct destination;
+void end_connection(connection*);
+int odd[] = {1,3,5,7,9};
+int even[] = {0,2,4,6,8};
+int (*arrPtr(int i))[5]
 {
-    return make_shared<int>(i);
-}
-
-shared_ptr<int> use_factory(int i)
-{
-    shared_ptr<int> p = factory(i);
-    cout << "void use_factory: " << p.use_count() << '\n';
-    return p;
+    return (i%2)? &odd : &even;
 }
 
 int main()
 {
-    auto p1 = use_factory(2);
-    cout << "int main: " << p1.use_count() << '\n';
-    auto p2(p1);
-    cout << "int main: " << p2.use_count() << '\n';
+    const char* cp = "hello";
+    cout << cp[3] << '\n';
+
     return 0;
 }
