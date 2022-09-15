@@ -32,7 +32,7 @@ public:
 
     Sales_data(const string &s, unsigned n, double p) : bookNo{s}, units_sold(n), revenue(p * n) { cout << "1 finished" << '\n'; };
     Sales_data() : Sales_data("", 0, 0) { cout << "2 finished" << '\n'; }
-    Sales_data(const string &s) : Sales_data(s, 0, 0) { cout << "3 finished" << '\n'; };
+    Sales_data(const string &s) : Sales_data(s, 0, 0) { cout << "3 finished" << '\n'; }
     Sales_data(istream &is) : Sales_data("1234")
     {
         read(is, *this);

@@ -24,8 +24,8 @@ public:
     friend class ConstStrBlobPtr;
     friend class StrBlobPtr;
     typedef vector<string>::size_type size_type;
-    StrBlob() : data(make_shared<vector<string>>()){};
-    StrBlob(initializer_list<string> i1) : data(make_shared<vector<string>>(i1)){};
+    StrBlob() : data(make_shared<vector<string>>()){}
+    StrBlob(initializer_list<string> i1) : data(make_shared<vector<string>>(i1)){}
     size_type size() const { return data->size(); }
     bool empty() const { return data->empty(); }
     string &front();

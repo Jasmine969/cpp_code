@@ -23,6 +23,8 @@ public:
     friend class StrBlobPtr;
     typedef vector<string>::size_type size_type;
     StrBlob() : data(make_shared<vector<string>>()){};
+    StrBlob(vector<string> *p): data(p){};
+    // StrBlob(const StrBlob& sb): data(sb.data){};
     StrBlob(initializer_list<string> i1) : data(make_shared<vector<string>>(i1)){};
     size_type size() const { return data->size(); }
     bool empty() const { return data->empty(); }
@@ -106,7 +108,6 @@ StrBlobPtr::check(size_type i, const string &msg) const
         throw out_of_range(msg);
     return p;
 }
-
 
 
 string &StrBlobPtr::deref() const
