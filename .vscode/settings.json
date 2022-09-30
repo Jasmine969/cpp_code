@@ -54,7 +54,17 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "bit": "cpp",
+        "chrono": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "condition_variable": "cpp",
+        "ratio": "cpp",
+        "mutex": "cpp",
+        "ranges": "cpp",
+        "stop_token": "cpp",
+        "cinttypes": "cpp"
     },
     "cmake.configureOnOpen": true,
     "todo-tree.tree.showCountsInTree": true,
