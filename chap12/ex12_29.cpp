@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Query_ex27.h"
+// #include "Query_ex30.h"
+#include "../chap13/Query_ex42.h"
 
 using std::cout;
 using std::cin;

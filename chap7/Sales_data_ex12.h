@@ -21,7 +21,7 @@ struct Sales_data
     unsigned int units_sold = 0;
     double revenue = 0.0;
     const string &isbn() const { return bookNo; }
-    Sales_data combine(Sales_data &);
+    Sales_data& combine(Sales_data &);
 
     Sales_data() = default; // default constructor
     Sales_data(const string &s) : bookNo(s){};
@@ -32,7 +32,7 @@ struct Sales_data
     }
 };
 
-Sales_data Sales_data::combine(Sales_data &trans)
+Sales_data& Sales_data::combine(Sales_data &trans)
 {
     units_sold += trans.units_sold;
     revenue += trans.revenue;

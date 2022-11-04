@@ -67,6 +67,6 @@
         "cinttypes": "cpp"
     },
     "cmake.configureOnOpen": true,
-    "todo-tree.tree.showCountsInTree": true,
+    "todo-tree.tree.showCountsInTree": false,
     "todo-tree.tree.showBadges": false
 }

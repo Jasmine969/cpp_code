@@ -1,0 +1,12 @@
+#include "StrVec_chap14.h"
+
+int main()
+{
+    StrVec sv1{"I", "Love"};
+    StrVec sv2{"I", "Love"};
+    StrVec sv3{"I", "LOve"};
+    StrVec sv4{"U"};
+    cout << std::boolalpha << (sv1 < sv2) << '\t' << (sv1 < sv3) << '\t'
+         << (sv1 < sv4) << '\n';
+    return 0;
+}

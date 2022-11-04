@@ -10,10 +10,11 @@ using std::ostream;
 using std::string;
 
 class Book;
-ostream& print(ostream&, Book&);
+ostream &print(ostream &, Book &);
 class Book
 {
     friend ostream &print(ostream &os, Book &book);
+
 private:
     string name;
     string bookNo;
@@ -22,7 +23,8 @@ private:
 
 public:
     Book(const string &book_name, const string &ISBN,
-         const string &book_author, double book_price) : name(book_name), bookNo(ISBN), author(book_author), price(book_price) {}
+         const string &book_author, double book_price)
+        : name(book_name), bookNo(ISBN), author(book_author), price(book_price) {}
     Book() : Book("", "", "", 0) {}
     Book(const string &ISBN) : Book(ISBN, "", "", 0) {}
     Book(istream &is) : Book()

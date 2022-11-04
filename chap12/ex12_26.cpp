@@ -25,7 +25,6 @@ int main()
     {
         cout << p[i] << ' ';
     }
-
     cout << "\n" << size << " words has been read!\n";
     // 析构对象
     while (q != p)

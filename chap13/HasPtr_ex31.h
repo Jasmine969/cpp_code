@@ -13,7 +13,6 @@ class HasPtr
 
 public:
     HasPtr(const char *cp = "") : ps(new string(cp)), i(0) {}
-    HasPtr(const string &s = "") : ps(new string(s)), i(0) {}
     HasPtr(const HasPtr &hp) : ps(new string(*hp.ps)), i(hp.i) {}
     HasPtr &operator=(const HasPtr &hp)
     {
