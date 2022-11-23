@@ -127,6 +127,9 @@ class StrBlobPtr
 {
     friend bool operator==(const StrBlobPtr &, const StrBlobPtr &);
     friend bool operator<(const StrBlobPtr &, const StrBlobPtr &);
+    friend StrBlobPtr operator+(StrBlobPtr, int);
+    friend StrBlobPtr operator+(int, StrBlobPtr);
+    friend StrBlobPtr operator-(StrBlobPtr, int);
 
 private:
     typedef StrBlob::size_type size_type;
@@ -137,10 +140,16 @@ private:
 public:
     StrBlobPtr() : curr(0){};
     StrBlobPtr(StrBlob &sb, size_type i = 0) : wp(sb.data), curr(i){};
-    string &deref() const; // 解引用
-    StrBlobPtr &incr();    // 前缀递增
     string &operator[](size_t);
     const string &operator[](size_t) const;
+    StrBlobPtr &operator++();   // pre-increment
+    StrBlobPtr &operator--();   // pre-decrement
+    StrBlobPtr operator++(int); // post-increment
+    StrBlobPtr operator--(int); // post-decrement
+    StrBlobPtr &operator+=(int);
+    StrBlobPtr &operator-=(int);
+    string& operator*() const;
+    string* operator->() const;
 };
 
 shared_ptr<vector<string>>
@@ -150,23 +159,81 @@ StrBlobPtr::check(size_type i, const string &msg) const
     auto p = wp.lock();
     if (!p)
         throw runtime_error("Unbounded StrBlobPtr");
-    // 再检查下标是否越界
-    if (i >= p->size())
+    // 再检查下标是否越界，接受off-the-end pointer
+    if (i > p->size())
         throw out_of_range(msg);
     return p;
 }
 
-string &StrBlobPtr::deref() const
+string& StrBlobPtr::operator*() const
 {
     auto p = check(curr, "dereference past end");
     return (*p)[curr];
 }
 
-StrBlobPtr &StrBlobPtr::incr()
+string* StrBlobPtr::operator->() const
 {
-    check(curr, "increment past end");
+    // return & this->operator*();
+    return &**this;
+}
+
+StrBlobPtr &StrBlobPtr::operator++()
+{
     ++curr;
+    check(curr, "increment past end");
     return *this;
+}
+
+StrBlobPtr &StrBlobPtr::operator--()
+{
+    --curr; // 如果本来是0，则递减后变成一个超大的数，下一行抛出error
+    check(curr, "decrement past the begin");
+    return *this;
+}
+
+StrBlobPtr StrBlobPtr::operator++(int)
+{
+    StrBlobPtr ret = *this;
+    ++*this; // check
+    return ret;
+}
+
+StrBlobPtr StrBlobPtr::operator--(int)
+{
+    StrBlobPtr ret = *this;
+    --*this; // check
+    return ret;
+}
+
+StrBlobPtr &StrBlobPtr::operator+=(int dist)
+{
+    curr += dist;
+    check(curr, "increment past the end");
+    return *this;
+}
+
+StrBlobPtr &StrBlobPtr::operator-=(int dist)
+{
+    curr -= dist;
+    check(curr, "increment past the end");
+    return *this;
+}
+
+StrBlobPtr operator+(StrBlobPtr p, int dist)
+{
+    p += dist;
+    return p;
+}
+
+StrBlobPtr operator+(int dist, StrBlobPtr p)
+{
+    return p + dist;
+}
+
+StrBlobPtr operator-(StrBlobPtr p, int dist)
+{
+    p -= dist;
+    return p;
 }
 
 inline bool operator==(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
@@ -208,13 +275,13 @@ bool operator<(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
 
 string &StrBlobPtr::operator[](size_t i)
 {
-    auto p = check(curr + i, "dereference past end");
+    auto p = check(curr + i + 1, "index past end");
     return (*p)[curr + i];
 }
 
 const string &StrBlobPtr::operator[](size_t i) const
 {
-    auto p = check(curr + i, "dereference past end");
+    auto p = check(curr + i + 1, "index past end");
     return (*p)[curr + i];
 }
 

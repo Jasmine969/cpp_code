@@ -2,8 +2,8 @@
 #include <string>
 #include <iomanip>
 #include <bitset>
-#include "HasPtr_ex30test.h"
 #include <vector>
+#include "StrBlobPtr_chap14.h"
 
 using std::bitset;
 using std::cin;
@@ -14,11 +14,6 @@ using std::vector;
 
 int main()
 {
-    const vector<int> v{1,2};
-    auto it = v.begin();
-    const HasPtr hp(0, "hello");
-    cout << hp.get_str() << '\n';
-    hp.get_str() = "jesus";
-    cout << hp.get_str() << '\n';
+    auto f = [] (int i) { return i; };
     return 0;
 }
