@@ -32,6 +32,7 @@ public:
     Book(const string &ISBN) : Book(ISBN, "", "", 0) {}
     Book(istream &is);
     Book &operator=(string &&);
+    explicit operator bool() const;
 };
 
 ostream &operator<<(ostream &os, const Book &book)
@@ -93,5 +94,10 @@ Book &Book::operator=(string &&book_no)
 {
     bookNo = book_no;
     return *this;
+}
+
+Book::operator bool() const
+{
+    return name.size() && bookNo.size() && author.size() && price;
 }
 #endif

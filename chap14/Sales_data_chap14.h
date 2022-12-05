@@ -38,7 +38,9 @@ public:
     }
     Sales_data &operator+=(const Sales_data &);
     Sales_data &operator-=(const Sales_data &);
-    Sales_data &operator=(const string&);
+    Sales_data &operator=(const string &);
+    explicit operator string() const;
+    explicit operator double() const;
 };
 
 inline double Sales_data::avg_price() const
@@ -98,10 +100,20 @@ Sales_data operator-(const Sales_data &lhs, const Sales_data &rhs)
     sub -= rhs;
     return sub;
 }
-Sales_data & Sales_data::operator=(const string& s)
+
+Sales_data &Sales_data::operator=(const string &s)
 {
     bookNo = s;
     return *this;
 }
 
+Sales_data::operator string() const
+{
+    return bookNo;
+}
+
+Sales_data::operator double() const
+{
+    return revenue;
+}
 #endif
