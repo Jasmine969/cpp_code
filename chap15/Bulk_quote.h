@@ -1,28 +1,29 @@
-#ifndef BULK_QUOTE_H
-#define BULK_QUOTE_H
+#ifndef BULK_QUOTE_EX11_H
+#define BULK_QUOTE_EX11_H
 
-#include "Quote.h"
+#include "Disc_quote.h"
 
-class Bulk_quote : public Quote
+class Bulk_quote : public Disc_quote
 {
 public:
     Bulk_quote() = default;
     Bulk_quote(const string &s, double p, size_t qty, double disc)
-        : Quote(s, p), // 基类成员只能用基类的构造函数初始化
-          min_qty(qty), discount(disc)
+        : Disc_quote(s, p, qty, disc)
     {
     }
     double net_price(size_t n) const override;
-    void fun() {}
-    int g = 100;
-private:
-    size_t min_qty = 0;
-    double discount = 1.0;
+    void debug() override;
 };
+
+void Bulk_quote::debug()
+{
+    Quote::debug();
+    cout << "min_qty:\t" << quantity << "\tdiscount:\t" << discount << "\n";
+}
 
 double Bulk_quote::net_price(size_t n) const
 {
-    if (n >= min_qty)
+    if (n >= quantity)
     {
         return n * (1 - discount) * price;
     }
