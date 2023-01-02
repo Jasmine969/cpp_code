@@ -99,7 +99,7 @@ void Message::move_folders(Message *m)
 
 /* NOTE 这边不用noexcept的话，只是不被push_back一类的函数调用。
 对于Message m2 = std::move(m1);仍然可调用 */
-Message::Message(Message &&m) 
+Message::Message(Message &&m)
     : contents(std::move(m.contents))
 {
     move_folders(&m);

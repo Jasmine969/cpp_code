@@ -1,21 +1,43 @@
 #include <iostream>
+#include <string>
+#include <set>
+#include <map>
 
 using std::cout;
+using std::multimap;
+using std::multiset;
+using std::string;
+using std::map;
 
-struct Base
+class Base
 {
-    int i = 10;
+public:
+    int i;
+
+protected:
+    int j;
+
+private:
+    int k;
 };
 
-struct Derived : public Base
+class Derived : protected Base
 {
-    char c = 'a';
 };
+
+bool compare(const string& lhs, const string& rhs)
+{
+    return lhs < rhs;
+}
 
 int main()
 {
-    Derived d;
-    Base* pb = &d;
-    (*pb).i;
+    map<string, int, decltype(compare)*> m{compare};
+    m.insert({"a", 1});
+    m.insert({"b", 2});
+    for (auto it = m.begin(); it != m.end(); ++it)
+    {
+        cout << it->second << '\n';
+    }
     return 0;
 }
