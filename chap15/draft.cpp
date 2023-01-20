@@ -2,12 +2,19 @@
 #include <string>
 #include <set>
 #include <map>
+#include <memory>
+#include <algorithm>
+#include <iterator>
+#include "../myfunc.h"
+#include <numeric>
+// #include "Query_chap15.h"
 
 using std::cout;
+using std::map;
 using std::multimap;
 using std::multiset;
+using std::set;
 using std::string;
-using std::map;
 
 class Base
 {
@@ -25,19 +32,19 @@ class Derived : protected Base
 {
 };
 
-bool compare(const string& lhs, const string& rhs)
+bool compare(const string &lhs, const string &rhs)
 {
     return lhs < rhs;
 }
 
 int main()
 {
-    map<string, int, decltype(compare)*> m{compare};
-    m.insert({"a", 1});
-    m.insert({"b", 2});
-    for (auto it = m.begin(); it != m.end(); ++it)
+    vector<int> file(10);
+    set<unsigned> all_lines;
+    for (unsigned i = 1; i != file.size(); ++i)
     {
-        cout << it->second << '\n';
+        all_lines.insert(i);
     }
+    
     return 0;
 }

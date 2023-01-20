@@ -21,11 +21,12 @@ public:
 HasPtr &HasPtr::operator=(const HasPtr &rhs)
 {
     ++*rhs.use; // 如果自赋值，则不会进if
-    if (--*use == 0)
-    {
-        delete use;
-        delete ps;
-    }
+    // if (--*use == 0)
+    // {
+    //     delete use;
+    //     delete ps;
+    // }
+    this->~HasPtr();
     ps = rhs.ps;
     i = rhs.i;
     use = rhs.use;

@@ -5,12 +5,15 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 using std::cout;
-using std::string;
-using std::vector;
+using std::find_if;
+using std::ispunct;
 using std::pow;
 using std::round;
+using std::string;
+using std::vector;
 
 inline double myRound(double x, int digit)
 // 保留小数到小数点后指定位数
@@ -18,7 +21,7 @@ inline double myRound(double x, int digit)
     return (round(x * pow(10, digit) + 0.0) / pow(10, digit));
 }
 
-void printVec(const vector<int>& v)
+void printVec(const vector<int> &v)
 {
     for (auto i : v)
     {
@@ -27,7 +30,7 @@ void printVec(const vector<int>& v)
     cout << '\n';
 }
 
-void printVec(const vector<unsigned>& v)
+void printVec(const vector<unsigned> &v)
 {
     for (auto i : v)
     {
@@ -36,7 +39,7 @@ void printVec(const vector<unsigned>& v)
     cout << '\n';
 }
 
-void printVec(const vector<double>& v)
+void printVec(const vector<double> &v)
 {
     for (auto i : v)
     {
@@ -45,7 +48,7 @@ void printVec(const vector<double>& v)
     cout << '\n';
 }
 
-void printVec(const vector<string>& v)
+void printVec(const vector<string> &v)
 {
     for (auto i : v)
     {
@@ -54,7 +57,7 @@ void printVec(const vector<string>& v)
     cout << '\n';
 }
 
-void printVec(const vector<char>& v)
+void printVec(const vector<char> &v)
 {
     for (auto i : v)
     {
@@ -63,7 +66,7 @@ void printVec(const vector<char>& v)
     cout << '\n';
 }
 
-void printVec(const vector<const char*>& v)
+void printVec(const vector<const char *> &v)
 {
     for (auto i : v)
     {
@@ -73,7 +76,7 @@ void printVec(const vector<const char*>& v)
 }
 
 // 如果需要（个数>1）变单词为复数形式
-string makePlural(unsigned cnt, string s, const string& ending="s")
+string makePlural(unsigned cnt, string s, const string &ending = "s")
 {
     if (cnt == 1)
     {
@@ -86,4 +89,12 @@ string makePlural(unsigned cnt, string s, const string& ending="s")
     }
     return s + ending;
 }
+
+void remove_punct(string &word) // 去掉一个单词末尾的标点符号
+{
+    auto pos = find_if(word.rbegin(), word.rend(), [](char c)
+                       { return !ispunct(c); });
+    word.erase(pos.base(), word.end());
+}
+
 #endif

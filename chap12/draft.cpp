@@ -26,6 +26,11 @@ public:
     }
 };
 
+class Prot_Foo : protected Foo
+{
+
+};
+
 int main()
 {
     shared_ptr<set<char>> ps;
