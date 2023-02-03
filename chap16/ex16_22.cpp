@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Query_ex33.h"
+#include "Query_ex22.h"
 
 using std::cout;
 using std::cin;
@@ -23,7 +23,7 @@ void runQueries (ifstream& infile)
 
 int main()
 {
-    ifstream in("lyrics2.txt");
+    ifstream in("../chap12/lyrics2.txt");
     runQueries(in);
     return 0;
 }

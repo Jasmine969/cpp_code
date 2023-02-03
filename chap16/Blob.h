@@ -1,3 +1,8 @@
+/*
+如果定义常量Blob，则不能获取其BlobPtr
+因为没有定义begin()和end()的常量版本
+*/
+
 #ifndef BLOB_H
 #define BLOB_H
 
@@ -46,6 +51,8 @@ public:
     typedef typename vector<T>::size_type size_type;
     Blob() : data(make_shared<vector<T>>()){};
     Blob(initializer_list<T> i1) : data(make_shared<vector<T>>(i1)){};
+    template <typename It>
+    Blob(It b, It e) : data(make_shared<vector<T>>(b, e)) {}
     size_type size() const { return data->size(); }
     bool empty() const { return data->empty(); }
     T &front();

@@ -5,20 +5,24 @@
 #include <functional>
 #include <vector>
 #include <iterator>
+#include "../myfunc.h"
+#include <memory>
 
 using std::cout;
 using std::string;
 using namespace std::placeholders;
-using std::vector;
 using std::back_inserter;
+using std::ostream;
+using std::vector;
 
-bool isShorter(const string &s, size_t sz=4)
+template <typename T1, typename T2, typename T3>
+T1 f(T2 i1, T3 i2)
 {
-    return s.size() < sz;
+    return i1 + i2;   
 }
 
 int main()
 {
-    cout << '\n';
+    double a = f<double, short>(1, 3);    
     return 0;
 }

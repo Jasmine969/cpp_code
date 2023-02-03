@@ -19,7 +19,7 @@ int main()
 {
     int i = 0;
     int *p1 = 0, *p2(&i);
-    // cout << compare(p1, p2) << '\n';
-    // cout << (p2 < p1) << '\n';
+    cout << compare(p1, p2) << '\n';
+    cout << (p2 < p1) << '\n';
     return 0;
 }

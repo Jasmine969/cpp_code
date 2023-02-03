@@ -21,56 +21,12 @@ inline double myRound(double x, int digit)
     return (round(x * pow(10, digit) + 0.0) / pow(10, digit));
 }
 
-void printVec(const vector<int> &v)
+template <typename C>
+void printContainer(C &container, char sep = ' ')
 {
-    for (auto i : v)
+    for (auto i : container)
     {
-        cout << i << ' ';
-    }
-    cout << '\n';
-}
-
-void printVec(const vector<unsigned> &v)
-{
-    for (auto i : v)
-    {
-        cout << i << ' ';
-    }
-    cout << '\n';
-}
-
-void printVec(const vector<double> &v)
-{
-    for (auto i : v)
-    {
-        cout << i << ' ';
-    }
-    cout << '\n';
-}
-
-void printVec(const vector<string> &v)
-{
-    for (auto i : v)
-    {
-        cout << i << ' ';
-    }
-    cout << '\n';
-}
-
-void printVec(const vector<char> &v)
-{
-    for (auto i : v)
-    {
-        cout << i << ' ';
-    }
-    cout << '\n';
-}
-
-void printVec(const vector<const char *> &v)
-{
-    for (auto i : v)
-    {
-        cout << i << ' ';
+        cout << i << sep;
     }
     cout << '\n';
 }

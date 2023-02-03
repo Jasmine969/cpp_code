@@ -64,7 +64,8 @@
         "mutex": "cpp",
         "ranges": "cpp",
         "stop_token": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "compare.hpp": "c"
     },
     "cmake.configureOnOpen": true,
     "todo-tree.tree.showCountsInTree": false,
