@@ -1,5 +1,11 @@
 {
     "files.associations": {
+        "*Dict": "OpenFOAM",
+        "*Properties": "OpenFOAM",
+        "fvSchemes": "OpenFOAM",
+        "fvSolution": "OpenFOAM",
+        "**/constant/g": "OpenFOAM",
+        "**/0/*": "OpenFOAM",
         "*.tcc": "cpp",
         "cctype": "cpp",
         "ostream": "cpp",
@@ -65,7 +71,8 @@
         "ranges": "cpp",
         "stop_token": "cpp",
         "cinttypes": "cpp",
-        "compare.hpp": "c"
+        "compare.hpp": "c",
+        "complex": "cpp"
     },
     "cmake.configureOnOpen": true,
     "todo-tree.tree.showCountsInTree": false,

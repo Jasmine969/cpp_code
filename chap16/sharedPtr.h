@@ -51,7 +51,8 @@ template <typename T>
 sharedPtr<T>::sharedPtr(sharedPtr &&sp) noexcept
     : p(sp.p), uc(sp.uc), del(sp.del)
 {
-    sp.p = sp.uc = nullptr;
+    sp.p = nullptr;
+    sp.uc = nullptr;
 }
 
 template <typename T>

@@ -52,6 +52,8 @@ public:
     size_t size() const { return first_free - elements; }
     size_t capacity() const { return cap - elements; }
     void push_back(const T &);
+    template <typename... Args>
+    void emplace_back(Args&&... args);
     T *begin() const { return elements; }
     T *end() const { return first_free; }
     void resize(size_t, const T &);
@@ -77,6 +79,14 @@ void Vec<T>::push_back(const T &s)
 {
     check_n_alloc();
     alloc.construct(first_free++, s);
+}
+
+template <typename T>
+template <typename... Args>
+void Vec<T>::emplace_back(Args&&... args)
+{
+    check_n_alloc();
+    alloc.construct(first_free++, std::forward<Args>(args)...);
 }
 
 template <typename T>

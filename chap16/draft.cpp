@@ -8,6 +8,8 @@
 #include "../myfunc.h"
 #include <memory>
 #include <typeinfo>
+#include <initializer_list>
+#include "../test.h"
 
 using std::cout;
 using std::string;
@@ -17,34 +19,12 @@ using std::ostream;
 using std::vector;
 
 template <typename T>
-void f(const T &t)
-{
-  cout << "const T &\n";
-  cout << t << '\n';
-}
+void f(const T &) { cout << "const T&\n"; };
 
-// void f(const string &t);
-
-void f(const char *t)
-{
-  cout << "const char *\n";
-  f(string(t));
-}
-// void f(char *t)
-// {
-//   cout << "char *\n";
-//   f(string(t));
-// }
-// void f(const char (&t)[5])
-// {
-//   cout << "char [5]\n";
-//   cout << t << '\n';
-// }
-
-static int a = 10;
+void f(const long &) { cout << "const long &\n"; }
 
 int main()
 {
-  f("helo");
+  f(1);
   return 0;
 }
