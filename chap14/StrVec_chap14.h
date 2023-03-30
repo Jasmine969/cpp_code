@@ -62,6 +62,7 @@ StrVec::StrVec(initializer_list<string> lst)
     auto ptr_pair = alloc_n_copy(lst.begin(), lst.end());
     elements = ptr_pair.first;
     first_free = cap = ptr_pair.second;
+    cout << "copy constructor\n";
 }
 
 void StrVec::push_back(const string &s)
@@ -107,6 +108,7 @@ StrVec &StrVec::operator=(const StrVec &sv)
     free();
     elements = ptr_pair.first;
     first_free = cap = ptr_pair.second;
+    cout << "copy assignment\n";
     return *this;
 }
 

@@ -9,7 +9,6 @@
 #include <memory>
 #include <typeinfo>
 #include <initializer_list>
-#include "../test.h"
 
 using std::cout;
 using std::string;
@@ -25,6 +24,6 @@ void f(const long &) { cout << "const long &\n"; }
 
 int main()
 {
-  f(1);
+  const vector<int> v{1,2};
   return 0;
 }

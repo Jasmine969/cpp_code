@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <bitset>
 #include <vector>
-#include "StrBlobPtr_chap14.h"
+#include "StrVec_chap14.h"
 #include <functional>
 #include <map>
 #include <cstring>
@@ -15,21 +15,19 @@ using std::getline;
 using std::string;
 using std::vector;
 using namespace std::placeholders;
-using std::modulus;
 using std::function;
+using std::modulus;
 using std::strcmp;
 
 int main()
 {
-    const char* cp = "h2o";
-    cout << (0 == strcmp(cp, "h2o")) << ' ' << (0 == strcmp(cp, "H2O")) << '\n';
-    if (cp=="h2o" || cp=="H2O")
-    {
-        cout << "yes\n";
-    }
-    else
-    {
-        cout << "no\n";
-    }
+    StrVec sv{"i", "LOVE", "YOU"};
+    StrVec *psv = new StrVec(sv);
+    cout << string(10, '-') << '\n';
+    *psv = sv;
+    cout << string(10, '-') << '\n';
+    *psv = StrVec(sv);
+    cout << string(10, '-') << '\n';
+    delete psv;
     return 0;
 }
