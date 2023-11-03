@@ -1,2 +1,2 @@
 # cpp_code
-My answers of *C++ Primer Plus* exercises.
+My answers of *C++ Primer* (5th ed) exercises.
